@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "C:/Users/Maxi/Desktop/dev/33",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "extends": "astro/tsconfigs/strict"
+}

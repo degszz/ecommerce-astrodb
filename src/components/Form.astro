@@ -1,0 +1,40 @@
+---
+import { db, Envio } from "astro:db";
+const envio = await db.select().from(Envio);
+console.log(envio);
+
+if (Astro.request.method === "POST") {
+    const formData = await Astro.request.formData();
+    const postalCode = formData.get("postalCode");
+    const location = formData.get("location");
+    const address = formData.get("address");
+    if (
+        typeof postalCode === "string" &&
+        typeof location === "string" &&
+        typeof address === "string"
+    ) {
+        await db.insert(Envio).values({
+            postalCode,
+            location,
+            address
+        });
+    }
+}
+---
+
+<main class="h-full flex flex-col">
+    <h3 class=" text-white text-2xl">Envio</h3>
+    <div class="w-fit h-fit border rounded p-3">
+        <form method="post" class="flex flex-col justify-center">
+            <label class="text-white" for=""><b>Codigo Postal</b></label>
+            <input id="postalCode" name="postalCode" placeholder="Codigo Postal" type="text" class="p-2 my-1 border-2 rounded-md border-orange-500"></input>
+            <label class="text-white" for=""><b>Provincia o Ciudad</b></label>
+            <input id="location" name="location" placeholder="Provincia o Ciudad..." type="text" class="p-2 my-1 border-2 rounded-md border-orange-500"></input>
+            <label class="text-white" for=""><b>Direccion</b></label>
+            <input id="address" name="address" placeholder="Dirrecion 1432" type="text" class="p-2 my-1 border-2 rounded-md border-orange-500"></input>
+            <button type="submit" name="submit" class="bg-orange-300 hover:bg-orange-500 flex-row border justify-center text-black cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-2.5 py-1.5 text-center inline-flex items-center dark:focus:ring-black-300 my-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-100 scale-90 gap-x-2 opacity-90 hover:opacity-100">Enviar</button>
+            <p class="text-white text-sm">Solo envios a <b>Toda Argentina.</b>
+            </p>
+        </form>
+    </div>
+</main>

@@ -1,0 +1,64 @@
+<nav>
+    <a
+        id="menu-button"
+        data-collapse-toggle="navbar-sticky"
+        data-nav-toggle="#navbar-sticky"
+        class="cursor-pointer text-white"
+        aria-controls="navbar-sticky"
+        aria-expanded="false"
+    >
+        MENU
+    </a>
+    <div
+        id="menu-open"
+        class="items-center justify-between hidden w-full navbar"
+        id="navbar-sticky"
+    >
+        <ul
+            class="flex w-[80vw] md:w-[60vw] h-custom--calc md:h-custom-calc left-0 top-[51px] md:top-[65px] flex-col absolute bg-black items-center p-4 md:p-0  font-medium border-2 md:mt-0 "
+        >
+            <li>
+                <a
+                    href="/"
+                    class="hover:underline btn block py-2 px-3 text-white rounded md:bg-transparen md:p-0 hover:text-orange-600"
+                    aria-current="page"
+                >
+                    Home
+                </a>
+            </li>
+            <li>
+                <a
+                    href="/product/shirt1"
+                    class="hover:underline btn block py-2 px-3 text-white rounded md:bg-transparen md:p-0 hover:text-orange-600"
+                >
+                    Pur0Huezo
+                </a>
+            </li>
+            <li>
+                <a
+                    href="/product/shirt2"
+                    class="hover:underline btn block py-2 px-3 text-white rounded md:bg-transparen md:p-0 hover:text-orange-600"
+                >
+                    0pium
+                </a>
+            </li>
+            <li>
+                <a
+                    href="/product/shirt3"
+                    class="hover:underline btn block py-2 px-3 text-white rounded md:bg-transparen md:p-0 hover:text-orange-600"
+                >
+                    3
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    const button = document.querySelector("#menu-button") as Element;
+    const menuOpen = document.querySelector("#menu-open") as Element;
+
+    button?.addEventListener("click", () => {
+        menuOpen.classList.toggle("hidden");
+    });
+</script>
