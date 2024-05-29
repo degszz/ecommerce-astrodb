@@ -5,7 +5,7 @@ const shirts = defineCollection({
     schema: z.object({
         image: z.string(),
         title: z.string(),
-        price:z.string(),
+        price:z.string(), 
         size:z.string().array(),
     })
 })

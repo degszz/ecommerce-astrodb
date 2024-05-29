@@ -1,7 +1,8 @@
 ---
-import { db, Envio } from "astro:db";
-const envio = await db.select().from(Envio);
-console.log(envio);
+import { eq } from "astro:db";
+import { db, Envio, User } from "astro:db";
+const envio = await db.select().from(Envio).innerJoin(User, eq(Envio.user_id, User.id));
+
 
 if (Astro.request.method === "POST") {
     const formData = await Astro.request.formData();

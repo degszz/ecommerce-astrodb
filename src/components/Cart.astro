@@ -1,3 +1,9 @@
+---
+import { getCollection } from "astro:content";
+import { db, Shirts } from "astro:db";
+const shirts = await db.select().from(Shirts);
+---
+
 <nav>
     <a
         id="cart-button"
@@ -15,9 +21,8 @@
         id="navbar-sticky"
     >
         <ul
-            class=" flex w-full h-custom--calc left-0 md:h-custom-calc top-[51px] md:top-[65px] flex-col absolute bg-black items-center p-4 md:p-0 font-medium border-2 border-white md:mt-0"
+            class="flex w-full h-custom--calc left-0 md:h-custom-calc top-[51px] md:top-[65px] flex-col absolute bg-black items-center p-4 md:p-0 font-medium border-2 border-white md:mt-0"
         >
-        
         </ul>
     </div>
 </nav>

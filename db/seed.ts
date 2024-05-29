@@ -1,16 +1,28 @@
-import { db, Envio } from 'astro:db';
+import { db, Shirts } from 'astro:db';
 
 // https://astro.build/db/seed
 export default async function seed() {
-/* 	await db.insert(Envio).values([
+	await db.insert(Shirts).values([
 		{
-			id: "3",
-			email: "maxx@ifi3io.com",
-			name: "maxx",
-			lastname: "ma",
-			postalCode: 2334,
-			location: "santiago",
-			address: "almiron 2323",
+			id:"1",
+			name:"Pur0Hueso",			
+			image:"/h.png", 
+			cantity:1, 
+			price:"$$$", 
+		},
+		{
+			id:"2",
+			name:"0pium",			
+			image:"/opium.png", 
+			cantity:1, 
+			price:"$$$", 
+		},
+		{
+			id:"3",
+			name:"3",			
+			image:"/333.png", 
+			cantity:1, 
+			price:"$$$", 
 		}
-	]) */
+	])
 }

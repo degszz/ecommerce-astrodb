@@ -2,9 +2,6 @@
 import Shirts from "@/components/Shirts.astro";
 import { getCollection } from "astro:content";
 const shirts = await getCollection("shirts");
-
-console.log(shirts)
-
 ---
 
 <ul
