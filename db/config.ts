@@ -1,7 +1,6 @@
 
 import { defineDb, defineTable, column } from 'astro:db';
 
-
 const User = defineTable({
   columns:{
     id:column.text({primaryKey:true, optional:false, unique:true,}),
@@ -27,21 +26,10 @@ const Envio = defineTable({
   },
 });
 
-const Shirts = defineTable({
-  columns: {
-    id: column.text({ unique: true, primaryKey: true }),
-    name: column.text(),
-    image: column.text(),
-    cantity: column.number(),
-    price: column.text(),
-  },
-});
-
 export default defineDb({
   tables: {
     User,
     Session,
-    Envio,
-    Shirts
+    Envio
   }
 });

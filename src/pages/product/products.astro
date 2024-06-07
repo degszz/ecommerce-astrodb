@@ -5,7 +5,7 @@ const shirts = await getCollection("shirts");
 ---
 
 <ul
-    class="bg-black w-full h-fit md:h-custom-calc grid grid-cols-2 md:grid-cols-3 place-items-center"
+    class="bg-black w-full h-fit md:h-fit grid grid-cols-2 md:grid-cols-3 place-items-center"
 >
     {shirts.map((shirt) => <Shirts {...shirt.data} slug={shirt.slug}/>)}
 </ul>

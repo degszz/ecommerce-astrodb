@@ -6,7 +6,8 @@ interface Props {
 const { title } = Astro.props;
 import Nav from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import '../style.css'
+import Sidebar from "../components/Sidebar.astro";
+import "../style.css";
 ---
 
 <!doctype html>
@@ -21,7 +22,8 @@ import '../style.css'
 	</head>
 	<body class="bg-black">
 		<Header />
-		<div class="mb-[51px] md:mb-[65px] bg-black">
+		<Sidebar />
+		<div class="mb-[51px] md:mt-[65px] md:mb-0 md:ml-[200px] bg-black">
 			<slot />
 		</div>
 		<Nav />

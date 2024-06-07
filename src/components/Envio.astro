@@ -3,14 +3,13 @@ import { eq } from "astro:db";
 import { db, Envio, User } from "astro:db";
 const envio = await db.select().from(Envio).innerJoin(User, eq(Envio.user_id, User.id));
 
-
 if (Astro.request.method === "POST") {
     const formData = await Astro.request.formData();
     const postalCode = formData.get("postalCode");
     const location = formData.get("location");
     const address = formData.get("address");
     if (
-        typeof postalCode === "string" &&
+        typeof postalCode === "number" &&
         typeof location === "string" &&
         typeof address === "string"
     ) {

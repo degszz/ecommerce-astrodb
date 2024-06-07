@@ -1,24 +1,21 @@
 ---
 import { type CollectionEntry } from "astro:content";
 type Props = CollectionEntry<"shirts">["data"] & {slug:string};
-const { image, title, price, size, slug } = Astro.props;
+const { image, title, price, slug } = Astro.props;
 ---
 
 
 <a
-    class="h-[450px]  md:h-custom-calc bg-black w-full text-white flex flex-col justify-center items-center duration-200 cursor-pointer"
+    class="h-fit py-3 md:h-customice-calc w-full text-white flex flex-col justify-center items-center duration-200 cursor-pointer"
     href={`/product/${slug}`}
 >
-    <div class="h-[60%] flex items-center">
+    <div class="w-fit h-fit md:h-full md:w-full flex items-center">
         <img src={image} class="w-full h-full" alt="" />
     </div>
     <div
-        class="w-[70%] md:w-[50%] h-[30%] flex flex-col justify-center border-2 py-1 items-center p-2"
+        class="w-[70%] md:w-[50%] h-[15%] flex flex-col justify-center border-2 py-1 items-center p-2"
     >
         <h3><b>{title}</b></h3>
         <p class="text-xl text-orange-500">{price}</p>
-        <button class='bg-orange-300 hover:bg-orange-500 flex-row border-2 justify-center text-black cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium p-1.5 text-center inline-flex items-center dark:focus:ring-black-300 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100'>
-            Comprar
-        </button>
     </div>
 </a>

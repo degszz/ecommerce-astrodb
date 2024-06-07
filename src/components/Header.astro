@@ -1,40 +1,36 @@
 ---
 import Menu from "../components/Menu.astro";
 import Cart from "../components/Cart.astro";
-const user = Astro.locals.user;
+import { getSession } from "auth-astro/server";
+const session = await getSession(Astro.request);
+import { SignIn, SignOut } from "auth-astro/components";
 ---
 
 <header
-    class="z-[1000] fixed top-0 border border-white text-white h-[51px] md:h-[65px] w-full flex items-center justify-between"
+    class="z-[1000] fixed top-0 border-b-2 text-white h-[51px] md:h-[65px] w-full flex items-center justify-between"
 >
-    <div class="flex px-1 items-center justify-center min-w-[100px] text-center h-full border border-white">
+    <div
+        class="flex px-1 items-center justify-center min-w-[100px] text-center h-full"
+    >
         <Menu />
     </div>
+    <di class="flex w-full h-full justify-center items-center">
+        {
+            session ? (
+                <>
+                    <p>Hola! {session.user?.email}</p>
+                    <SignOut>Cerrar Sesion</SignOut>
+                </>
+            ) : (
+                <>
+                    <SignIn provider="google">Iniciar Sesion</SignIn>
+                </>
+            )
+        }
+    </di>
     <div
-        class="flex w-full h-full justify-center items-center border border-white"
+        class="flex px-1 items-center justify-center min-w-[100px] text-center h-full"
     >
-    {
-        user ? (
-            <div>
-                <form method="POST" action="/api/signout">
-                    <button class="flex-row justify-center border text-white cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-5 py-2 text-center inline-flex items-center dark:focus:ring-black-300   hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100">
-                        Sign out
-                    </button>
-                </form>
-            </div>
-        ) : (
-            <div class="flex flex-col ">
-                <a
-                    class="flex-row justify-center border text-white cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-5 py-2 text-center inline-flex items-center dark:focus:ring-black-300   hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100"
-                    href="/signin"
-                >
-                    Sign In
-                </a>
-            </div>
-        )
-    }
-    </div>
-    <div class="flex px-1 items-center justify-center min-w-[100px] text-center h-full border border-white">
         <Cart />
     </div>
 </header>
