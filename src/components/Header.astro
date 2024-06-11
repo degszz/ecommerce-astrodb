@@ -14,20 +14,39 @@ import { SignIn, SignOut } from "auth-astro/components";
     >
         <Menu />
     </div>
-    <di class="flex w-full h-full justify-center items-center">
-        {
-            session ? (
-                <>
-                    <p>Hola! {session.user?.email}</p>
-                    <SignOut>Cerrar Sesion</SignOut>
-                </>
-            ) : (
-                <>
-                    <SignIn provider="google">Iniciar Sesion</SignIn>
-                </>
-            )
-        }
-    </di>
+    <div class="flex w-full h-full justify-end items-center">
+        <div>
+            {
+                session ? (
+                    <>
+                        <div class="flex">
+                            <img
+                                src={session.user?.image}
+                                alt={session.user?.name}
+                                style={{
+                                    margin:"0px 7px 0px 0px",
+                                    maxHeight: "40px",
+                                    borderRadius: "1.5em",
+                                }}
+                            />
+                            <SignOut class="bg-orange-300 hover:bg-orange-500 flex-row border justify-center text-black cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-2.5 py-1.5 text-center inline-flex items-center dark:focus:ring-black-300 ml-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100">
+                                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-logout-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" /><path d="M15 12h-12l3 -3" /><path d="M6 15l-3 -3" /></svg>
+                            </SignOut>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <SignIn
+                            provider="google"
+                            class="bg-orange-300 hover:bg-orange-500 flex-row border justify-center text-black cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-2.5 py-1.5 text-center inline-flex items-center dark:focus:ring-black-300 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100"
+                        >
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-login"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M21 12h-13l3 -3" /><path d="M11 15l-3 -3" /></svg>
+                        </SignIn>
+                    </>
+                )
+            }
+        </div>
+    </div>
     <div
         class="flex px-1 items-center justify-center min-w-[100px] text-center h-full"
     >
