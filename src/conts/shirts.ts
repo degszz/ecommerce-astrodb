@@ -28,4 +28,12 @@ export const SHIRTS: Shirt[] = [
         price: 10000,
         size: "xxl",
     },
+    {
+        image: "/opium.png",
+        id: "4",
+        title: "3",
+        price: 10000,
+        size: "xxl",
+    },
+
 ]

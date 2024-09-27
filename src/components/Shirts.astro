@@ -1,28 +1,29 @@
 ---
-import { type CollectionEntry } from "astro:content";
-import { SHIRTS } from "@/content/shirts";
+import { SHIRTS } from "@/conts/shirts";
 ---
 
 <ul
     class="bg-black w-full h-fit md:h-fit grid grid-cols-2 md:grid-cols-3 place-items-center"
 >
     {
-        SHIRTS.map(({ id, title, image, price, size }) => (
+        SHIRTS.map(product => (
             <a
-                class="h-fit py-3 md:h-customice-calc w-full text-white flex flex-col justify-center items-center duration-200 cursor-pointer"
-                href={`/shirts/${id}`}
+                class="h-fit py-3 md:h-full lg:min-h-[500px] w-full text-white flex flex-col justify-center items-center duration-200 cursor-pointer"
+                href={`/shirts/${product.id}`}
             >
-                <div class="w-fit h-fit md:h-full md:w-full flex items-center">
-                    <img src={image} class="w-full h-full" alt="" />
+                <div class="max-h-[250px] max-w-[250px] md:max-w-[400px] md:max-h-[400px] lg: lg: md:h-full md:w-full flex items-center">
+                    <img src={product.image} class="w-full h-full" alt="" />
                 </div>
-                <div class="w-[70%] md:w-[50%] h-[15%] flex flex-col justify-center border-2 py-1 items-center p-2">
+                <div class="flex">
                     <h3>
-                        <b>{title}</b>
+                        <b>{product.title}</b>
                     </h3>
-                    <p>{size}</p>
-                    <p class="text-xl text-orange-500">${price}</p>
+                    <p class="text-md text-orange-500">${product.price}</p>
                 </div>
             </a>
         ))
     }
 </ul>
+
+<script>
+</script>

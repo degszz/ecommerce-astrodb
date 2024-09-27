@@ -1,7 +1,5 @@
 ---
-import { eq } from "astro:db";
-import { db, Envio, User } from "astro:db";
-const envio = await db.select().from(Envio).innerJoin(User, eq(Envio.user_id, User.id));
+import { db, Envio } from 'astro:db';
 
 if (Astro.request.method === "POST") {
     const formData = await Astro.request.formData();
@@ -11,7 +9,7 @@ if (Astro.request.method === "POST") {
     if (
         typeof postalCode === "number" &&
         typeof location === "string" &&
-        typeof address === "string"
+        typeof address === "string" 
     ) {
         await db.insert(Envio).values({
             postalCode,

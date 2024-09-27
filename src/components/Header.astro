@@ -1,6 +1,5 @@
 ---
 import Menu from "../components/Menu.astro";
-import Cart from "../components/Cart.astro";
 import { getSession } from "auth-astro/server";
 const session = await getSession(Astro.request);
 import { SignIn, SignOut } from "auth-astro/components";
@@ -24,13 +23,36 @@ import { SignIn, SignOut } from "auth-astro/components";
                                 src={session.user?.image}
                                 alt={session.user?.name}
                                 style={{
-                                    margin:"0px 7px 0px 0px",
+                                    margin: "0px 7px 0px 0px",
                                     maxHeight: "40px",
                                     borderRadius: "1.5em",
                                 }}
                             />
-                            <SignOut class="bg-orange-300 hover:bg-orange-500 flex-row border justify-center text-black cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-2.5 py-1.5 text-center inline-flex items-center dark:focus:ring-black-300 ml-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100">
-                                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-logout-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" /><path d="M15 12h-12l3 -3" /><path d="M6 15l-3 -3" /></svg>
+                            <SignOut class="bg-white flex-row border justify-center text-black cursor-pointer hover:bg-black hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-2.5 py-1.5 text-center inline-flex items-center dark:focus:ring-black-300 ml-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-user-x"
+                                >
+                                    <>
+                                        <path
+                                            stroke="none"
+                                            d="M0 0h24v24H0z"
+                                            fill="none"
+                                        />
+                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h3.5" />
+                                        <path d="M22 22l-5 -5" />
+                                        <path d="M17 22l5 -5" />
+                                    </>
+                                </svg>
                             </SignOut>
                         </div>
                     </>
@@ -38,9 +60,32 @@ import { SignIn, SignOut } from "auth-astro/components";
                     <>
                         <SignIn
                             provider="google"
-                            class="bg-orange-300 hover:bg-orange-500 flex-row border justify-center text-black cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-2.5 py-1.5 text-center inline-flex items-center dark:focus:ring-black-300 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100"
+                            class="bg-white flex-row border justify-center text-black cursor-pointer hover:bg-black hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-2.5 py-1.5 text-center inline-flex items-center dark:focus:ring-black-300 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100"
                         >
-                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-login"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M21 12h-13l3 -3" /><path d="M11 15l-3 -3" /></svg>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-user-question"
+                            >
+                                <>
+                                    <path
+                                        stroke="none"
+                                        d="M0 0h24v24H0z"
+                                        fill="none"
+                                    />
+                                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h3.5" />
+                                    <path d="M19 22v.01" />
+                                    <path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
+                                </>
+                            </svg>
                         </SignIn>
                     </>
                 )
@@ -50,13 +95,13 @@ import { SignIn, SignOut } from "auth-astro/components";
     <div
         class="flex px-1 items-center justify-center min-w-[100px] text-center h-full"
     >
-        <Cart />
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 17h-11v-14h-2" /><path d="M6 5l14 1l-1 7h-13" /></svg>
     </div>
 </header>
 <script>
     window.addEventListener("scroll", function () {
         var header = document.querySelector("header");
-        header.classList.toggle("abajo", window.scrollY > 0);
+        header?.classList.toggle("abajo", window.scrollY > 0);
     });
 </script>
 <style>

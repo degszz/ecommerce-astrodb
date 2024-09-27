@@ -1,6 +1,37 @@
+---
+import { SHIRTS } from "@/conts/shirts";
+const { id } = Astro.params;
+const [shirt] = SHIRTS.filter((shirt) => shirt.id === id);
+---
+
 <button
-onclick=""
-class="bg-orange-300 hover:bg-orange-500 flex-row border justify-center text-black cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-2.5 py-1.5 text-center inline-flex items-center dark:focus:ring-black-300 mr-2 mb-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100"
+    onclick=""
+    data-shirt-id={shirt.id}
+    data-buy-shirt={shirt.id}
+    class="bg-orange-300 hover:bg-orange-500 flex-row border justify-center text-black cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-2.5 py-1.5 text-center inline-flex items-center dark:focus:ring-black-300 mr-2 mb-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100"
 >
-ver
+    ver
 </button>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
+>
+    import { $ } from "@/lib/dom-selector";
+
+    const $buyShirt = $(".buy-shirt") as NodeListOf<HTMLButtonElement>
+    $buyShirt.forEach(($button) => {
+        const { shirtId, envioId } = $button.dataset;
+
+        $button.onclick = () => {
+            fetch(`/api/pedido/${shirtId}`, {
+                method: "POST",
+                headers: {
+                    "Content=Type": "aplication/json",
+                },
+                body: JSON.stringify({ envioId }),
+            }).then((res) => {
+                console.log(res.ok, res.status)
+            })
+        }
+    })
+</script>

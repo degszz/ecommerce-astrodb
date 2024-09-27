@@ -4,10 +4,9 @@ interface Props {
 }
 
 const { title } = Astro.props;
-import Nav from "../components/Footer.astro";
+import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import Sidebar from "../components/Sidebar.astro";
-import "../style.css";
+
 import { getSession } from "auth-astro/server";
 ---
 
@@ -23,10 +22,9 @@ import { getSession } from "auth-astro/server";
 	</head>
 	<body class="bg-black">
 		<Header />
-		<Sidebar />
-		<div class="mb-[51px] md:mt-[65px] md:mb-0 md:ml-[200px] bg-black">
+		<div class=" mb-[51px] md:mb-0 lg:mb-0">
 			<slot />
 		</div>
-		<Nav />
+		<Footer />
 	</body>
 </html>

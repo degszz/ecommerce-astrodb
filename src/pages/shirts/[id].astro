@@ -1,13 +1,12 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { SHIRTS } from "@/content/shirts";
+import { SHIRTS } from "@/conts/shirts";
 
 export function getStaticPaths() {
     return SHIRTS.map(({ id }) => ({
         params: { id },
     }));
 }
-export const prerender = true;
 
 const { id } = Astro.params;
 const [shirt] = SHIRTS.filter((shirt) => shirt.id === id);
@@ -15,9 +14,9 @@ const [shirt] = SHIRTS.filter((shirt) => shirt.id === id);
 
 <Layout title={shirt.title}>
     <div
-        class="h-custom--calc md:h-customice-calc w-full flex flex-col justify-between md:flex-row"
+        class="h-custom--calc mt-[51px] md:mt-[65px] md:h-customice-calc lg:h-customice-calc w-full flex flex-col justify-between md:flex-row"
     >
-        <div class="w-full h-[60vh] md:h-customice-calc">
+        <div class="w-full h-[55vh] md:h-customice-calc">
             <swiper-container
                 class="mySwiper bg-black"
                 pagination="true"
@@ -37,46 +36,85 @@ const [shirt] = SHIRTS.filter((shirt) => shirt.id === id);
                 >
             </swiper-container>
         </div>
+
         <div
-            class="py-[15px] w-full md:h-customice-calc text-white border-2 border-white md:border-0 md:border-l-2"
+            class="w-full h-custom--calc md:h-customice-calc lg:h-customice-calc text-white border-2 border-white md:border-0 md:border-l-2"
         >
-            <div
-                class="w-full h-full flex flex-col justify-center items-center"
-            >
-                <h2 class="text-3xl">
-                    {shirt.title}
-                </h2>
-                <p class="text-orange-500">${shirt.price}</p>
-                <ul class="flex justify-center">
-                    <button
-                        onclick=""
-                        class="rounded-full px-3 m-1 border-2 border-white w-full h-full hover:bg-white hover:text-black active:bg-white"
+            <!-- ESTO TENGO QUE ARREGLAR -->
+            <div class="w-full h-full flex justify-center items-center">
+                <div
+                    class="min-w-[300px] h-full lg:min-w-[400px] flex justify-around items-center md:justify-center md:items-start lg:justify-center lg:items-start md:flex-col lg:flex-col"
+                >
+                    <div class="min-h-[80px] flex flex-col justify-around">
+                        <h2 class="text-2xl mr-2">
+                            {shirt.title}:
+                        </h2>
+                        <ul
+                            class="flex justify-center md:justify-start lg:justify-start"
+                        >
+                            <li>
+                                <button
+                                    onclick=""
+                                    class="rounded-full focus:bg-white focus:text-black px-2 mr-1 border-2 border-white w-fit h-full hover:bg-white hover:text-black active:bg-white"
+                                >
+                                    <b>{shirt.size}</b>
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    onclick=""
+                                    class="rounded-full focus:bg-white focus:text-black px-2 mr-1 border-2 border-white w-fit h-full hover:bg-white hover:text-black active:bg-white"
+                                >
+                                    <b>{shirt.size}</b>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div
+                        class="md:py-[15px] min-h-[80px] h-fit flex flex-col justify-around items-around"
                     >
-                        <b>{shirt.size}</b>
-                    </button>
-                </ul>
-                <div>
-                    <a
-                        href="/form"
-                        class="bg-orange-300 hover:bg-orange-500 flex-row border-2 justify-center text-black cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium mt-2 p-1.5 text-center inline-flex items-center dark:focus:ring-black-300 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100"
+                        <p class="text-xl">${shirt.price}</p>
+                        <button
+                            onclick=""
+                            data-shirt-id={id}
+                            data-buy-shirt={shirt.id}
+                            class="flex-row border justify-center text-white cursor-pointer hover:bg-black-600 hover:text-white focus:ring-2 focus:outline-none focus:ring-black-300 font-medium rounded-lg px-2.5 py-1.5 text-center inline-flex items-center dark:focus:ring-black-300 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100"
+                        >
+                            Comprar
+                        </button>
+                    </div>
+
+                    <div
+                        class="border-t border-white w-full h-[100px] hidden md:block lg:block"
                     >
-                        Comprar</a
-                    >
+                        <div class="flex flex-col justify-center text-start">
+                            <span class="text-lg text-white">
+                                Envios Atraves de Correo Argentino
+                            </span>
+                            <span
+                                ><a
+                                    href=""
+                                    class="underline hover"
+                                    target="_blank">Correo Argentino</a
+                                ></span
+                            >
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </Layout>
-
 <script
     src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
 ></script>
+
 <style>
     swiper-container {
         width: 100%;
         height: 100%;
     }
-
     swiper-slide {
         text-align: center;
         font-size: 18px;
@@ -85,11 +123,12 @@ const [shirt] = SHIRTS.filter((shirt) => shirt.id === id);
         justify-content: center;
         align-items: center;
     }
-
+    
     swiper-slide img {
         display: block;
         width: 100%;
         height: 100%;
+        background-color: #fff;
         object-fit: cover;
     }
 </style>
